@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   var allEvents = $('#allEvents'),
+     divDebounce_test = $('#debounce_test'),
      divDebounce_true = $('#debounce_true'),
      divDebouncejtrue = $('#debouncejtrue'),
      divDebounce_false = $('#debounce_false'),
@@ -32,19 +33,22 @@ $(document).ready(function(){
   function setup_lazy_functions(_){
     lazy_Debounce_Events = $.throttle(50, false, updateEvents);
 
+    lazyDebounce_test = _.debounce(update, 200, {leading: true, trailing: true});
+
     lazyDebounce_true = _.debounce(update, 200, true);
     lazyDebouncejtrue = $.debounce(200, true, update);
 
     lazyDebounce_false = _.debounce(update, 200, false);
     lazyDebouncejfalse = $.debounce(200, false, update);
 
-    lazyThrottle_true = _.throttle(update, 200);
+    lazyThrottle_true = _.throttle(update, 500);
     lazyThrottlejtrue = $.throttle(200, true, update);
     lazyThrottlejfalse = $.throttle(200, false, update);
   }
 
   function updateEvents(){
     update(allEvents, next_color);
+    lazyDebounce_test(divDebounce_test, next_color);
     lazyDebounce_true(divDebounce_true, next_color);
     lazyDebouncejtrue(divDebouncejtrue, next_color);
     lazyDebounce_false(divDebounce_false, next_color);
@@ -63,6 +67,7 @@ $(document).ready(function(){
 
   function reset(){
     allEvents.html('<span></span>');
+    divDebounce_test.html('<span></span>');
     divDebounce_true.html('<span></span>');
     divDebouncejtrue.html('<span></span>');
     divDebounce_false.html('<span></span>');
@@ -123,6 +128,7 @@ $(document).ready(function(){
     drawing = setInterval(function(){
       counter++;
       allEvents[0].appendChild(document.createElement('span'));
+      divDebounce_test[0].appendChild(document.createElement('span'));
       divDebounce_true[0].appendChild(document.createElement('span'));
       divDebouncejtrue[0].appendChild(document.createElement('span'));
       divDebounce_false[0].appendChild(document.createElement('span'));

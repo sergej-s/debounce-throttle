@@ -87,7 +87,7 @@
 
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="underscore.js"></script>
-    <script type="text/javascript" src="lodash.js"></script>
+    <script type="text/javascript" src="lodash.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="jquery-throttle-debounce.js"></script>
     <script>window.lo = _.noConflict();</script>
@@ -108,6 +108,7 @@
 
     <div id="content">
       <h2>Mousemove Events:</h2><div id="allEvents"></div>
+      <h2>Debounce test: _.debounce(fn, 200, {leading: true, trailing: true});</h2><div id="debounce_test"></div>
       <h2>Debounce Inmediate: _.debounce(fn, 200, true);</h2><div id="debounce_true"></div>
       <h2>Debounce Inmediate: $.debounce(200, true, fn);</h2> <div id="debouncejtrue"></div>
       <h2>Debounce: _.debounce(fn, 200);</h2> <div id="debounce_false"></div>
